@@ -1,20 +1,22 @@
-﻿using System.Text;
-
-var fileAddress = "contas.txt";
-var readedBytes = -1;
-var fileStream = new FileStream(fileAddress, FileMode.Open);
-var buffer = new byte[1024];
-
-
-while (readedBytes != 0)
+﻿partial class Program
 {
-  readedBytes = fileStream.Read(buffer, 0, 1024);
-  BufferWrite(buffer);
-}
+  static void Main(string[] args)
+  {
+    var fileAddress = "contas.txt";
 
-static void BufferWrite(byte[] buffer)
-{
-  var utf8 = new UTF8Encoding();
-  var text = utf8.GetString(buffer);
-  Console.Write(text);
+    using (var fileStream = new FileStream(fileAddress, FileMode.Open))
+    {
+      var reader = new StreamReader(fileStream);
+
+      // var line = reader.ReadLine();
+      // var text = reader.ReadToEnd();
+      // var number = reader.Read();
+
+      while (!reader.EndOfStream)
+      {
+        var line = reader.ReadLine();
+        Console.WriteLine(line);
+      }
+    }
+  }
 }

@@ -1,4 +1,6 @@
-﻿namespace AnyBankIO
+﻿using System.Globalization;
+
+namespace AnyBankIO
 {
     public class CurrentAccount
     {
@@ -36,6 +38,15 @@
             }
 
             Balance += value;
+        }
+
+        public override string ToString()
+        {
+            return $"\nAgency: {Agency}\n" +
+                   $"Number: {Number}\n" +
+                   $"Balance: {Balance.ToString("F").Replace(".",",")}\n" +
+                   $"Holder:\n" +
+                   $"- Name: {Holder.Name}";
         }
     }
 }

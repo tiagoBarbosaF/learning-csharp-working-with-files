@@ -26,4 +26,21 @@ partial class Program
       writer.Write("987,3495,503.60,John Cena");
     }
   }
+
+  static void C03_WriteTest()
+  {
+    var addressNewFile = "test.txt";
+
+    using (var fileStream = new FileStream(addressNewFile, FileMode.Create))
+    using (var writer = new StreamWriter(fileStream))
+    {
+      for (int i = 0; i < 100000; i++)
+      {
+        writer.WriteLine($"Line {i}");
+        writer.Flush();
+        Console.WriteLine($"Line {i} has writing successfully. Enter any key for continue...");
+        Console.ReadLine();
+      }
+    }
+  }
 }

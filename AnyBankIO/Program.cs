@@ -2,20 +2,22 @@
 {
   static void Main(string[] args)
   {
-    // var addressNewFile = "test-write.txt";
-    //
-    // using (var fileStream = new FileStream(addressNewFile, FileMode.Create))
-    // using (var writer = new StreamWriter(fileStream))
+    // Console.WriteLine("Enter your name: ");
+    // var name = Console.ReadLine();
+
+    var lines = File.ReadAllLines("contas.txt");
+    Console.WriteLine($"Total lines in the file contas.txt: {lines.Length}");
+
+    // foreach (var line in lines)
     // {
-    //   writer.WriteLine(true);
-    //   writer.WriteLine(false);
-    //   writer.WriteLine(12343433452354);
+    //   Console.WriteLine(line);
     // }
-    //
-    // Console.WriteLine("Application finished...");
+
+    var fileBytes = File.ReadAllBytes("contas.txt");
+    Console.WriteLine($"Total bytes in the file contas.txt: {fileBytes.Length} bytes");
     
-    // C04_BinaryWrite();
-    C04_BinaryReader();
+    File.WriteAllText("writingFileWithClassFile.txt","Testing File.WriteAllText");
+    // C05_UsingConsoleStream();
   }
 
   
